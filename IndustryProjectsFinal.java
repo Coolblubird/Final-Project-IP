@@ -30,17 +30,24 @@ public class IndustryProjectsFinal extends Application {
 			Label taxText = new Label("Tax Rate: %");
 			TextField tfTax = new TextField(String.valueOf(taxRate.getTax() * 100));
 			Button bTax = new Button("Enter New Tax Rate");
+			Label confirmText1 = new Label(" ");
+			Label confirmText2 = new Label(" ");
 			
 			bTax.setOnAction(b -> {
-				if (tfTax.getText().matches("[0-9]+")) 
+				if (tfTax.getText().matches("[0-9.]+")) {
 					taxRate.setTax((Double.valueOf(tfTax.getText()) / 100));
+					confirmText1.setText("Your Tax Rate");
+					confirmText2.setText("has been changed.");
+				}
 			});
 			
 			gp2.add(taxText,0,0);
-			gp2.add(tfTax,1,0);
 			gp2.add(bTax,0,1);
+			gp2.add(tfTax,1,0);
+			gp2.add(confirmText1,0,2);
+			gp2.add(confirmText2,0,3);
 			
-			Scene scene2 = new Scene(gp2,230,100);
+			Scene scene2 = new Scene(gp2,306,100);
 			
 			Stage newWindow = new Stage();
 			newWindow.setTitle("Tax");
